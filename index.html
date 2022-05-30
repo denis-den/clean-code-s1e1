@@ -1,19 +1,57 @@
+<!DOCTYPE html>
 <html>
-<HEAD><title>Todo App</title>
-<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="style.css" type="text/css" MEDIA="screen" charset="utf-8">
-</HEAD>
-<body>
-<div class="aaa"><img src="./eisenhower-matrix.jpg"><a class='more_inf' href="https://goal-life.com/page/method/matrix-eisenhower">Want more details&quest;</a></div>
-<div class="centered-main-page-element"><p id='topSectionForAddingElementToList'><label for="new-task">Add Item</label><div class="task-row-wrapper"><input id='new-task'class="task" type="text"><button>Add</button></div>
-</p><h3>Todo</h3>
-<ul id='incompleteTasks'>
-<li><input type='checkbox'><label class="task">Pay Bills</label><input type="text" class="task"><button class="edit">Edit</button><button class="delete"><img src="./remove.svg"></button></li>
-<li class="editMode"><input type="checkbox"><label class="task">Go Shopping</label><input type="text" value="Go Shopping" class="task"><button class='edit'>Save</button><button class="delete"><img src="./remove.svg"></button></li>
-</ul><h3>Completed</h3><ul id="completed-tasks"><li><input type="checkbox" checked><label class="task">See the Doctor</label><input type="text" class="task"><button class="edit">Edit</button><button class="delete"><img src="./remove.svg"></button>
-</li>
-</ul>
-</div>
-<script type="text/javascript" SRC="app.js"></script>
+<head>
+  <title>Todo App</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" media="screen" charset="utf-8">
+</head>
+<body class="page">
+  <header class="header">
+    <img class="header__illustration" src="./eisenhower-matrix.jpg" alt="App illustration">
+    <a class="header__information" href="https://goal-life.com/page/method/matrix-eisenhower">Want more details?</a>
+  </header>  
+  <main class="app-content">
+    <section class="app-content__add">
+      <label for="new-task" class="app-content__heading app-content__label-new-task">Add Item</label>
+      <div class="app-content__add-item">
+        <input id="new-task" class="app-content__input app-content__input-text app-content__input-new-task" type="text">
+        <button class="app-content__button">Add</button>
+      </div>
+    </section>    
+    <h3 class="app-content__heading">Todo</h3>
+    <ul class="app-content__incomplete-tasks">
+      <li class="app-content__task">
+        <input type="checkbox" class="app-content__input-checkbox">
+        <label class="app-content__input app-content__label">Pay Bills</label>
+        <input type="text" class="app-content__input app-content__input-text">
+        <button class="app-content__button app-content__button_edit">Edit</button>
+        <button class="app-content__button app-content__button_delete">
+          <img src="./remove.svg" alt="" class="app-content__button-img">
+        </button>
+      </li>
+      <li class="app-content__task app-content__task_edit">
+        <input type="checkbox" class="app-content__input-checkbox">
+        <label class="app-content__input app-content__label">Go Shopping</label>
+        <input type="text" value="Go Shopping" class="app-content__input app-content__input-text">
+        <button class="app-content__button app-content__button_edit">Save</button>
+        <button class="app-content__button app-content__button_delete">
+          <img src="./remove.svg" alt="" class="app-content__button-img">
+        </button>
+      </li>      
+    </ul>
+    <h3 class="app-content__heading">Completed</h3>
+    <ul class="app-content__completed-tasks">
+      <li class="app-content__task">
+        <input type="checkbox" class="app-content__input-checkbox" checked>
+        <label class="app-content__input app-content__label">See the Doctor</label>
+        <input type="text" class="app-content__input app-content__input-text">
+        <button class="app-content__button app-content__button_edit">Edit</button>
+        <button class="app-content__button app-content__button_delete">
+          <img src="./remove.svg" alt="" class="app-content__button-img">
+        </button>
+      </li>
+    </ul>
+  </main>
+  <script src="app.js"></script>
 </body>
 </html>
