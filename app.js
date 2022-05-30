@@ -5,17 +5,15 @@
 //Solution: Add interactivity so the user can manage daily tasks.
 //Break things down into smaller steps and take each step at a time.
 
-
 // Event handling, user interaction is what starts the code execution.
 
 var taskInput=document.getElementById("new-task");//Add a new task.
 var addButton=document.getElementsByTagName("button")[0];//first button
-var incompleteTaskHolder=document.getElementById("incompleteTasks");//ul of #incompleteTasks
-var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
+var incompleteTaskHolder=document.querySelector(".app-content__incomplete-tasks");//ul of #incompleteTasks
+var completedTasksHolder=document.querySelector(".app-content__completed-tasks");//completed-tasks
 
 //New task list item
 var createNewTaskElement=function(taskString){
-
   var listItem=document.createElement("li");
 
   //input (checkbox)
@@ -31,19 +29,24 @@ var createNewTaskElement=function(taskString){
   var deleteButton=document.createElement("button");//delete button
   var deleteButtonImg=document.createElement("img");//delete button image
 
+  listItem.className='app-content__task';
+
   label.innerText=taskString;
-  label.className='task';
+  label.className='app-content__input app-content__label';
 
   //Each elements, needs appending
   checkBox.type="checkbox";
+  checkBox.className="app-content__input-checkbox";
+
   editInput.type="text";
-  editInput.className="task";
+  editInput.className="app-content__input app-content__input-text";
 
   editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
-  editButton.className="edit";
+  editButton.className="app-content__button app-content__button_edit";
 
-  deleteButton.className="delete";
+  deleteButton.className="app-content__button app-content__button_delete";
   deleteButtonImg.src='./remove.svg';
+  deleteButtonImg.className="app-content__button-img";
   deleteButton.appendChild(deleteButtonImg);
 
   //and appending.
@@ -66,7 +69,6 @@ var addTask=function(){
   bindTaskEvents(listItem, taskCompleted);
 
   taskInput.value="";
-
 }
 
 //Edit an existing task.
@@ -74,27 +76,26 @@ var addTask=function(){
 var editTask=function(){
   console.log("Edit Task...");
   console.log("Change 'edit' to 'save'");
-
+  
   var listItem=this.parentNode;
 
   var editInput=listItem.querySelector('input[type=text]');
   var label=listItem.querySelector("label");
-  var editBtn=listItem.querySelector(".edit");
-  var containsClass=listItem.classList.contains("editMode");
+  var editBtn=listItem.querySelector(".app-content__button_edit");
+  var containsClass=listItem.classList.contains("app-content__task_edit");
   //If class of the parent is .editmode
   if(containsClass){
-
-    //switch to .editmode
-    //label becomes the inputs value.
-    label.innerText=editInput.value;
-    editBtn.innerText="Edit";
+      //switch to .editmode
+      //label becomes the inputs value.
+      label.innerText=editInput.value;
+      editBtn.innerText="Edit";
   } else {
     editInput.value=label.innerText;
     editBtn.innerText="Save";
   }
 
   //toggle .editmode on the parent.
-  listItem.classList.toggle("editMode");
+  listItem.classList.toggle("app-content__task_edit");
 };
 
 //Delete task.
@@ -142,9 +143,8 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
   console.log("bind list item events");
   //select ListItems children
   var checkBox=taskListItem.querySelector("input[type=checkbox]");
-  var editButton=taskListItem.querySelector("button.edit");
-  var deleteButton=taskListItem.querySelector("button.delete");
-
+  var editButton=taskListItem.querySelector("button.app-content__button_edit");
+  var deleteButton=taskListItem.querySelector("button.app-content__button_delete");
 
   //Bind editTask to edit button.
   editButton.onclick=editTask;
@@ -164,6 +164,7 @@ for (var i=0; i<incompleteTaskHolder.children.length;i++){
 
 //cycle over completedTasksHolder ul list items
 for (var i=0; i<completedTasksHolder.children.length;i++){
+
   //bind events to list items chldren(tasksIncompleted)
   bindTaskEvents(completedTasksHolder.children[i],taskIncomplete);
 }
