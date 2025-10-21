@@ -29,10 +29,10 @@ var createNewTaskElement=function(taskString){
   var deleteButton=document.createElement("button");//delete button
   var deleteButtonImg=document.createElement("img");//delete button image
 
-  listItem.className='app-content__task';
+  listItem.className="app-content__task";
 
   label.innerText=taskString;
-  label.className='app-content__input app-content__label';
+  label.className="app-content__input app-content__label";
 
   //Each elements, needs appending
   checkBox.type="checkbox";
@@ -45,8 +45,8 @@ var createNewTaskElement=function(taskString){
   editButton.className="app-content__button app-content__button_edit";
 
   deleteButton.className="app-content__button app-content__button_delete";
-  deleteButtonImg.src='./remove.svg';
-  deleteButtonImg.alt = 'Delete';
+  deleteButtonImg.src="./remove.svg";
+  deleteButtonImg.alt = "Delete";
   deleteButtonImg.className="app-content__button-img";
   deleteButton.appendChild(deleteButtonImg);
 
@@ -80,7 +80,7 @@ var editTask=function(){
   
   var listItem=this.parentNode;
 
-  var editInput=listItem.querySelector('input[type=text]');
+  var editInput=listItem.querySelector("input[type=text]");
   var label=listItem.querySelector("label");
   var editBtn=listItem.querySelector(".app-content__button_edit");
   var containsClass=listItem.classList.contains("app-content__task_edit");
